@@ -1,26 +1,30 @@
 version: "2.3"
 services:
   sonar-server:
-    image: sonarqube:7.1
+    image: sonarqube:latest
     ports:
       - 9000:9000
       - 9002:9002
+    # volumes: 
+    #   - /Users/aphisitnamracha/JAVA-DEV-SERVER/sonarQube/sonarqube_data:/opt/sonarqube/data
+    #   - /Users/aphisitnamracha/JAVA-DEV-SERVER/sonarQube/sonarqube_extensions:/opt/sonarqube/extensions
+    #   - /Users/aphisitnamracha/JAVA-DEV-SERVER/sonarQube/sonarqube_logs:/opt/sonarqube/logs
 
-  jfrog-server :
-    image: docker.bintray.io/jfrog/artifactory-oss:latest
-    ports: 
-      - 8081:8081
-      - 8082:8082
-    volumes: 
-      - /Users/aphisitnamracha/JAVA-DEV-SERVER/jfrog_home/artifactory/var/:/var/opt/jfrog/artifactory 
+  # jfrog-server :
+  #   image: docker.bintray.io/jfrog/artifactory-oss:latest
+  #   ports: 
+  #     - 8081:8081
+  #     - 8082:8082
+  #   volumes: 
+  #     - /Users/aphisitnamracha/JAVA-DEV-SERVER/jfrog_home/artifactory/var/:/var/opt/jfrog/artifactory 
 
-  jenkin-server :
-    image: jenkins/jenkins:lts
-    ports:
-      - 8080:8080
-      - 50000:50000
-    depends_on:
-      - sonar-server
-      - jfrog-server
-    volumes: 
-      - /Users/aphisitnamracha/JAVA-DEV-SERVER/jenkin_sonarqube:/var/jenkins_home
+  # jenkin-server :
+  #   image: jenkins/jenkins:lts
+  #   ports:
+  #     - 8080:8080
+  #     - 50000:50000
+  #   depends_on:
+  #     - sonar-server
+  #     - jfrog-server
+  #   volumes: 
+  #     - /Users/aphisitnamracha/JAVA-DEV-SERVER/jenkin_sonarqube:/var/jenkins_home
